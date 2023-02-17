@@ -49,3 +49,19 @@ Route::get('/enderecos',function (){
         echo '<hr>';
     }
 });
+
+Route::get('/inserir', function (){
+    $c = new Cliente();
+    $c->nome = 'José Almeida';
+    $c->telefone = '31984305054';
+    $c->save();
+    $e = new Endereco();
+    $e->rua = 'Das primaveras';
+    $e->numero = 1569;
+    $e->bairro = 'João Del Rey';
+    $e->cidade = 'São Paulo';
+    $e->uf = 'AL';
+    $e->cep = '98748695';
+
+    $c->endereco()->save($e);
+});
